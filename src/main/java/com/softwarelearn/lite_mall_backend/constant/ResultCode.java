@@ -13,10 +13,14 @@ public enum ResultCode {
     FAIL(400, "失败"),
 
     /**
-     * 注册相关结果
+     * 注册相关结果和查询结果
      */
     USER_REGISTER_SUCCESS(1000, "注册成功"),
-    USER_EXISTS(1001, "用户已存在");
+    USER_EXISTS(1001, "用户已存在"),
+
+    GOODS_NOT_EXISTS(1021,"商品不存在"),
+
+    GOODS_SEARCH_SUCCESS(1022,"查找成功");
 
     private int code;
     private String msg;
