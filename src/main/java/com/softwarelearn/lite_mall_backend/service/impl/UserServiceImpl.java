@@ -14,7 +14,7 @@ import com.softwarelearn.lite_mall_backend.constant.ResultCode;
 
 /**
  * 用户服务实现类
- * @author linorman
+ * @author linorman tt
  * @data 2023/04/16
  */
 @Slf4j
@@ -38,5 +38,54 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
         log.info("用户注册成功");
         return R.success(ResultCode.USER_REGISTER_SUCCESS, null);
 
+    }
+
+    @Override
+    public R signIn(UserInfo userInfo) {
+        String username = userInfo.getUsername();
+        LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserInfo::getUsername, username);
+        UserInfo temp = userInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            log.info("用户不存在");
+            return R.error(ResultCode.USER_NOT_EXISTS, null);
+        }else if(!temp.getPassword().equals(userInfo.getPassword())) {
+            log.info("密码错误");
+            return R.error(ResultCode.USER_PASSWORD_WRONG, null);
+        }
+        temp.setLogined(true);
+        userInfoMapper.updateById(temp);
+        log.info("用户登录成功");
+        return R.success(ResultCode.USER_SignIn_SUCCESS, null);
+    }
+
+    @Override
+    public R getUserInfo(UserInfo userInfo) {
+        String username = userInfo.getUsername();
+        LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserInfo::getUsername, username);
+        UserInfo temp = userInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            log.info("用户不存在");
+            return R.error(ResultCode.USER_NOT_EXISTS, null);
+        }
+        log.info("获取用户信息成功");
+        return R.success(ResultCode.SUCCESS, temp);
+    }
+
+    @Override
+    public R logout(UserInfo userInfo) {
+        String username = userInfo.getUsername();
+        LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserInfo::getUsername, username);
+        UserInfo temp = userInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            log.info("用户不存在");
+            return R.error(ResultCode.USER_NOT_EXISTS, null);
+        }
+        temp.setLogined(false);
+        userInfoMapper.updateById(temp);
+        log.info("用户退出登录成功");
+        return R.success(ResultCode.SUCCESS, null);
     }
 }
