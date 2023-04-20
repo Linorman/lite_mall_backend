@@ -2,7 +2,7 @@ package com.softwarelearn.lite_mall_backend.constant;
 
 /**
  * 结果编码枚举类
- * @author linorman
+ * @author linorman tt
  * @data 2023/04/16
  */
 public enum ResultCode {
@@ -18,9 +18,19 @@ public enum ResultCode {
     USER_REGISTER_SUCCESS(1000, "注册成功"),
     USER_EXISTS(1001, "用户已存在"),
 
+
     GOODS_NOT_EXISTS(1021,"商品不存在"),
 
-    GOODS_SEARCH_SUCCESS(1022,"查找成功");
+    GOODS_SEARCH_SUCCESS(1022,"查找成功"),
+
+    /**
+     * 登录相关结果
+     */
+    USER_SIGHIN_SUCCESS(2000,"登录成功"),
+    USER_NOT_EXISTS(2001,"用户不存在"),
+    USER_PASSWORD_WRONG(2002,"密码错误");
+
+
 
     private int code;
     private String msg;
