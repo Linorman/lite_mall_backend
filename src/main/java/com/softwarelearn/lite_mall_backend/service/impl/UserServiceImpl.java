@@ -53,7 +53,7 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
             log.info("密码错误");
             return R.error(ResultCode.USER_PASSWORD_WRONG, null);
         }
-        temp.setLogined(true);
+        temp.setIsLogined(1);
         userInfoMapper.updateById(temp);
         log.info("用户登录成功");
         return R.success(ResultCode.USER_SIGHIN_SUCCESS, null);
@@ -83,7 +83,7 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
             log.info("用户不存在");
             return R.error(ResultCode.USER_NOT_EXISTS, null);
         }
-        temp.setLogined(false);
+        temp.setIsLogined(0);
         userInfoMapper.updateById(temp);
         log.info("用户退出登录成功");
         return R.success(ResultCode.SUCCESS, null);

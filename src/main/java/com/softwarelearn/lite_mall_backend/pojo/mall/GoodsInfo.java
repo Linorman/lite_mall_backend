@@ -7,20 +7,16 @@ import java.io.Serializable;
 
 /**
  * 商品信息类
+ *
  * @author lyh
  * @data 2023/04/16
  */
 @Slf4j
 @Data
 public class GoodsInfo implements Serializable {
-
-        private String goodsName;
-        private double goodsPrice;
-        private long id;
-        private String message;
-
-    public String getGoodsName() {
-        return goodsName;
-    }
+    private String goodsName;
+    private double goodsPrice;
+    private long id;
+    private String message;
 }
 
