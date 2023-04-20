@@ -13,11 +13,11 @@ import java.io.Serializable;
 @Slf4j
 @Data
 public class UserInfo implements Serializable {
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private String imageUrl;
     private String phoneNumber;
     private int account;
-    private boolean isLogined;
+    private int isLogined;
 }
