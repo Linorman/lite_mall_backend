@@ -56,7 +56,7 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
         temp.setLogined(true);
         userInfoMapper.updateById(temp);
         log.info("用户登录成功");
-        return R.success(ResultCode.USER_SignIn_SUCCESS, null);
+        return R.success(ResultCode.USER_SIGHIN_SUCCESS, null);
     }
 
     @Override
