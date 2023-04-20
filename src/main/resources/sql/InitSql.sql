@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `user_info` (
  `image_url` VARCHAR(255) NOT NULL,
  `phone_number` VARCHAR(255) NOT NULL,
  `account` INTEGER NOT NULL,
- `is_logined` JSON NOT NULL,
+ `is_logined` INTEGER NOT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
