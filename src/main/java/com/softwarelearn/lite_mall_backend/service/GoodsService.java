@@ -13,9 +13,14 @@ import com.softwarelearn.lite_mall_backend.pojo.mall.GoodsInfo;
 public interface GoodsService extends IService<GoodsInfo> {
     /**
      * 获取商品信息
-
      * @return R
      */
      R getAllGoods();
+
+    /**
+     * 获取商品信息
+     * @param goodsInfo
+     * @return
+     */
      R getGoods(GoodsInfo goodsInfo);
 }
