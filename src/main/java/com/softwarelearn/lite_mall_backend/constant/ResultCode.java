@@ -2,7 +2,7 @@ package com.softwarelearn.lite_mall_backend.constant;
 
 /**
  * 结果编码枚举类
- * @author linorman tt
+ * @author linorman tt ww
  * @data 2023/04/16
  */
 public enum ResultCode {
@@ -28,7 +28,14 @@ public enum ResultCode {
      */
     USER_SIGHIN_SUCCESS(2000,"登录成功"),
     USER_NOT_EXISTS(2001,"用户不存在"),
-    USER_PASSWORD_WRONG(2002,"密码错误");
+    USER_PASSWORD_WRONG(2002,"密码错误"),
+    /**
+     * 订单相关结果
+     */
+    ORDERNUM_SEARCH_SUCCESS(3001, "订单不存在"),
+    ORDERNUM_INCREASE_SUCCESS(3002,"订单量增加成功"),
+    VISITNUM_INCREASE_SUCCESS(3003,"订单量增加成功" ),
+    VISITNUM_SEARCH_SUCCESS(3004,"查找访问量成功" );
 
 
 
