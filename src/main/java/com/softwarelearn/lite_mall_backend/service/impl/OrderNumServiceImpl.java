@@ -27,10 +27,8 @@ public class OrderNumServiceImpl extends ServiceImpl<OrderNumInfoMapper, OrderNu
     @Override
     public R updateOrderNum(OrderNumInfo orderNumInfo) {
         LambdaQueryWrapper<OrderNumInfo> queryWrapper = new LambdaQueryWrapper<>();
-        // 1.去数据库查询订单量
         OrderNumInfo temp= orderNumInfoMapper.selectOne(queryWrapper);
         Integer views = temp.getOrderNum();
-        // 2.拿出原来的订单量+1后更新到数据库
         if (views.equals(null)) {views=1;}
         else{views += 1;}
         temp.setOrderNum(views);
@@ -41,9 +39,8 @@ public class OrderNumServiceImpl extends ServiceImpl<OrderNumInfoMapper, OrderNu
     @Override
     public R getOrderNum(OrderNumInfo orderNumInfo) {
         LambdaQueryWrapper<OrderNumInfo> queryWrapper = new LambdaQueryWrapper<>();
-        // 1.去数据库查询订单量
         OrderNumInfo temp = orderNumInfoMapper.selectOne(queryWrapper);
-        Integer views = temp.getOrderNum();
-        return R.success(ResultCode.ORDERNUM_SEARCH_SUCCESS, null);
+        int views = temp.getOrderNum();
+        return R.success(ResultCode.ORDERNUM_SEARCH_SUCCESS, views);
     }
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/mall")
-
 public class OrderNumController{
 
     @Autowired
@@ -26,8 +25,6 @@ public class OrderNumController{
     public R orderNumIncrease(@RequestBody OrderNumInfo orderNumInfo){
         return orderNumService.updateOrderNum(orderNumInfo);
     }
-
-
     @GetMapping("/getOrderNum")
     public R getOrderNum(@RequestBody OrderNumInfo orderNumInfo){
         return orderNumService.getOrderNum(orderNumInfo);
