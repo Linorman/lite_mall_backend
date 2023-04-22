@@ -27,10 +27,8 @@ public class VisitNumServiceImpl extends ServiceImpl<VisitNumInfoMapper, VisitNu
     @Override
     public R updateVisitNum(VisitNumInfo visitNumInfo) {
         LambdaQueryWrapper<VisitNumInfo> queryWrapper = new LambdaQueryWrapper<>();
-        // 1.去数据库查询访问量
         VisitNumInfo temp= visitNumInfoMapper.selectOne(queryWrapper);
         Integer views = temp.getVisitNum();
-        // 2.拿出原来的量+1后更新到数据库
         views += 1;
         temp.setVisitNum(views);
         visitNumInfoMapper.updateById(temp);
@@ -40,9 +38,8 @@ public class VisitNumServiceImpl extends ServiceImpl<VisitNumInfoMapper, VisitNu
     @Override
     public R getVisitNum(VisitNumInfo visitNumInfo) {
         LambdaQueryWrapper<VisitNumInfo> queryWrapper = new LambdaQueryWrapper<>();
-        // 1.去数据库查询订单量
         VisitNumInfo temp = visitNumInfoMapper.selectOne(queryWrapper);
-        Integer views = temp.getVisitNum();
-        return R.success(ResultCode.VISITNUM_SEARCH_SUCCESS, null);
+        int views = temp.getVisitNum();
+        return R.success(ResultCode.VISITNUM_SEARCH_SUCCESS, views);
     }
 }

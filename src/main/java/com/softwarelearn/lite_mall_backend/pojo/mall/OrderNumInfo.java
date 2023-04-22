@@ -3,6 +3,8 @@ package com.softwarelearn.lite_mall_backend.pojo.mall;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.Serializable;
+
 /**
  * 订单量
  * @author ww
@@ -10,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Data
-
-public class OrderNumInfo {
-    private Integer orderNum;
+public class OrderNumInfo implements Serializable {
+    private int orderNum;
 }

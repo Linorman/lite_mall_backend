@@ -16,18 +16,15 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/mall")
-
 public class VisitNumController{
 
     @Autowired
     private VisitNumService visitNumService;
 
-    @PostMapping("/orderNumIncrease")
+    @PostMapping("/orderVisitIncrease")
     public R visitNumIncrease(@RequestBody VisitNumInfo visitNumInfo){
         return visitNumService.updateVisitNum(visitNumInfo);
     }
-
-
     @GetMapping("/getVisitNum")
     public R getVisitNum(@RequestBody VisitNumInfo visitNumInfo){
         return visitNumService.getVisitNum(visitNumInfo);
