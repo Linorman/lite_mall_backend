@@ -17,18 +17,24 @@ public enum ResultCode {
      */
     USER_REGISTER_SUCCESS(1000, "注册成功"),
     USER_EXISTS(1001, "用户已存在"),
-
+    USER_PHONENUMBER_EXISTS(1002, "手机号已存在"),
 
     GOODS_NOT_EXISTS(1021,"商品不存在"),
 
     GOODS_SEARCH_SUCCESS(1022,"查找成功"),
 
     /**
-     * 登录相关结果
+     * 登录/登出相关结果
      */
     USER_SIGHIN_SUCCESS(2000,"登录成功"),
     USER_NOT_EXISTS(2001,"用户不存在"),
-    USER_PASSWORD_WRONG(2002,"密码错误");
+    USER_NAME_PHONE_NOT_MATCH(2002,"用户名与手机号不匹配"),
+    USER_PASSWORD_WRONG(2003,"密码错误"),
+    USER_ALREADY_LOGINED(2004,"用户已登录"),
+    USER_LOGOUT_SUCCESS(2005,"登出成功"),
+    USER_ALREADY_LOGOUT(2006,"用户已登出");
+
+
 
 
 
