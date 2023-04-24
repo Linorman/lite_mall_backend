@@ -26,13 +26,20 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
 
     @Override
     public R register(UserInfo userInfo) {
-        String username = userInfo.getUsername();
         LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
+        String username = userInfo.getUsername();
         queryWrapper.eq(UserInfo::getUsername, username);
-        UserInfo temp = userInfoMapper.selectOne(queryWrapper);
-        if (temp != null) {
-            log.info("用户已存在");
+        UserInfo tempName = userInfoMapper.selectOne(queryWrapper);
+        if (tempName != null) {
+            log.info("用户名已存在");
             return R.error(ResultCode.USER_EXISTS, null);
+        }
+        String phoneNumber = userInfo.getPhoneNumber();
+        queryWrapper.eq(UserInfo::getPhoneNumber, phoneNumber);
+        UserInfo tempPhone = userInfoMapper.selectOne(queryWrapper);
+        if (tempPhone != null) {
+            log.info("手机号已存在");
+            return R.error(ResultCode.USER_PHONENUMBER_EXISTS, null);
         }
         userInfoMapper.insert(userInfo);
         log.info("用户注册成功");
@@ -49,9 +56,15 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
         if (temp == null) {
             log.info("用户不存在");
             return R.error(ResultCode.USER_NOT_EXISTS, null);
+        }else if(!temp.getPhoneNumber().equals(userInfo.getPhoneNumber())) {
+            log.info("用户名与手机号不匹配");
+            return R.error(ResultCode.USER_NAME_PHONE_NOT_MATCH, null);
         }else if(!temp.getPassword().equals(userInfo.getPassword())) {
             log.info("密码错误");
             return R.error(ResultCode.USER_PASSWORD_WRONG, null);
+        }else if(temp.getIsLogined() == 1) {
+            log.info("用户已登录");
+            return R.error(ResultCode.USER_ALREADY_LOGINED, null);
         }
         temp.setIsLogined(1);
         userInfoMapper.updateById(temp);
@@ -82,10 +95,13 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
         if (temp == null) {
             log.info("用户不存在");
             return R.error(ResultCode.USER_NOT_EXISTS, null);
+        }else if(temp.getIsLogined() == 0) {
+            log.info("用户已登出");
+            return R.error(ResultCode.USER_ALREADY_LOGOUT, null);
         }
         temp.setIsLogined(0);
         userInfoMapper.updateById(temp);
         log.info("用户退出登录成功");
-        return R.success(ResultCode.SUCCESS, null);
+        return R.success(ResultCode.USER_LOGOUT_SUCCESS, null);
     }
 }
