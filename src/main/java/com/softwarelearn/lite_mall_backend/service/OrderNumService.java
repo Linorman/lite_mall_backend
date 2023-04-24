@@ -14,9 +14,13 @@ import com.softwarelearn.lite_mall_backend.pojo.mall.OrderNumInfo;
 public interface OrderNumService extends IService<OrderNumInfo> {
     /**
      * 订单量加一
-     * @param orderNumInfo
      * @return R
      */
-    public R updateOrderNum(OrderNumInfo orderNumInfo);
-    public R getOrderNum(OrderNumInfo orderNumInfo);
+    R updateOrderNum();
+
+    /**
+     * 获取订单量
+     * @return R
+     */
+    R getOrderNum();
 }

@@ -13,5 +13,6 @@ import java.io.Serializable;
 @Slf4j
 @Data
 public class OrderNumInfo implements Serializable {
+    private int id;
     private int orderNum;
 }

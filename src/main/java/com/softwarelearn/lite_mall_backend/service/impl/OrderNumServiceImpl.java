@@ -25,22 +25,27 @@ public class OrderNumServiceImpl extends ServiceImpl<OrderNumInfoMapper, OrderNu
     private OrderNumInfoMapper orderNumInfoMapper;
 
     @Override
-    public R updateOrderNum(OrderNumInfo orderNumInfo) {
+    public R updateOrderNum() {
         LambdaQueryWrapper<OrderNumInfo> queryWrapper = new LambdaQueryWrapper<>();
         OrderNumInfo temp= orderNumInfoMapper.selectOne(queryWrapper);
-        Integer views = temp.getOrderNum();
-        if (views.equals(null)) {views=1;}
-        else{views += 1;}
-        temp.setOrderNum(views);
+        if (temp == null) {
+            temp = new OrderNumInfo();
+            temp.setOrderNum(1);
+            orderNumInfoMapper.insert(temp);
+            return R.success(ResultCode.ORDERNUM_INCREASE_SUCCESS,null);
+        }
+        temp.setOrderNum(temp.getOrderNum() + 1);
         orderNumInfoMapper.updateById(temp);
         return R.success(ResultCode.ORDERNUM_INCREASE_SUCCESS,null);
     }
 
     @Override
-    public R getOrderNum(OrderNumInfo orderNumInfo) {
+    public R getOrderNum() {
         LambdaQueryWrapper<OrderNumInfo> queryWrapper = new LambdaQueryWrapper<>();
         OrderNumInfo temp = orderNumInfoMapper.selectOne(queryWrapper);
-        int views = temp.getOrderNum();
-        return R.success(ResultCode.ORDERNUM_SEARCH_SUCCESS, views);
+        if (temp == null) {
+            return R.success(ResultCode.ORDERNUM_SEARCH_SUCCESS, 0);
+        }
+        return R.success(ResultCode.ORDERNUM_SEARCH_SUCCESS, temp.getOrderNum());
     }
 }

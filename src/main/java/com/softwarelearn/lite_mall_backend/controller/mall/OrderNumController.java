@@ -22,12 +22,12 @@ public class OrderNumController{
     private OrderNumService orderNumService;
 
     @PostMapping("/orderNumIncrease")
-    public R orderNumIncrease(@RequestBody OrderNumInfo orderNumInfo){
-        return orderNumService.updateOrderNum(orderNumInfo);
+    public R orderNumIncrease(){
+        return orderNumService.updateOrderNum();
     }
     @GetMapping("/getOrderNum")
-    public R getOrderNum(@RequestBody OrderNumInfo orderNumInfo){
-        return orderNumService.getOrderNum(orderNumInfo);
+    public R getOrderNum(){
+        return orderNumService.getOrderNum();
     }
 
 }

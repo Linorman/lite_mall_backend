@@ -25,21 +25,27 @@ public class VisitNumServiceImpl extends ServiceImpl<VisitNumInfoMapper, VisitNu
     private VisitNumInfoMapper visitNumInfoMapper;
 
     @Override
-    public R updateVisitNum(VisitNumInfo visitNumInfo) {
+    public R updateVisitNum() {
         LambdaQueryWrapper<VisitNumInfo> queryWrapper = new LambdaQueryWrapper<>();
         VisitNumInfo temp= visitNumInfoMapper.selectOne(queryWrapper);
-        Integer views = temp.getVisitNum();
-        views += 1;
-        temp.setVisitNum(views);
+        if (temp == null) {
+            temp = new VisitNumInfo();
+            temp.setVisitNum(1);
+            visitNumInfoMapper.insert(temp);
+            return R.success(ResultCode.VISITNUM_INCREASE_SUCCESS,null);
+        }
+        temp.setVisitNum(temp.getVisitNum() + 1);
         visitNumInfoMapper.updateById(temp);
         return R.success(ResultCode.VISITNUM_INCREASE_SUCCESS,null);
     }
 
     @Override
-    public R getVisitNum(VisitNumInfo visitNumInfo) {
+    public R getVisitNum() {
         LambdaQueryWrapper<VisitNumInfo> queryWrapper = new LambdaQueryWrapper<>();
         VisitNumInfo temp = visitNumInfoMapper.selectOne(queryWrapper);
-        int views = temp.getVisitNum();
-        return R.success(ResultCode.VISITNUM_SEARCH_SUCCESS, views);
+        if (temp == null) {
+            return R.success(ResultCode.VISITNUM_SEARCH_SUCCESS, 0);
+        }
+        return R.success(ResultCode.VISITNUM_SEARCH_SUCCESS, temp.getVisitNum());
     }
 }

@@ -13,9 +13,13 @@ import com.softwarelearn.lite_mall_backend.pojo.mall.VisitNumInfo;
 public interface VisitNumService extends IService<VisitNumInfo> {
     /**
      * 访问量量加一
-     * @param visitNumInfo
      * @return R
      */
-    public R updateVisitNum(VisitNumInfo visitNumInfo);
-    public R getVisitNum(VisitNumInfo visitNumInfo);
+    R updateVisitNum();
+
+    /**
+     * 获取访问量
+     * @return
+     */
+    R getVisitNum();
 }
