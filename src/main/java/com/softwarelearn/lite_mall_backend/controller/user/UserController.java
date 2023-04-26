@@ -29,7 +29,7 @@ public class UserController {
         return userService.signIn(userInfo);
     }
 
-    @GetMapping("/getUserInfo")
+    @PostMapping("/getUserInfo")
     public R getUserInfo(@RequestBody UserInfo userInfo){
         return userService.getUserInfo(userInfo);
     }
