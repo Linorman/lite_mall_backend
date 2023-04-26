@@ -9,8 +9,13 @@ import com.softwarelearn.lite_mall_backend.service.UserService;
 import com.softwarelearn.lite_mall_backend.mapper.UserInfoMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.softwarelearn.lite_mall_backend.constant.ResultCode;
+
+import java.util.ArrayList;
 
 /**
  * 用户服务实现类
@@ -24,6 +29,16 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
     @Autowired
     private UserInfoMapper userInfoMapper;
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserInfo::getUsername, username);
+        UserInfo userInfo = userInfoMapper.selectOne(queryWrapper);
+        if(userInfo == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        return new User(userInfo.getUsername(), userInfo.getPassword(), new ArrayList<>());
+    }
     @Override
     public R register(UserInfo userInfo) {
         LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();

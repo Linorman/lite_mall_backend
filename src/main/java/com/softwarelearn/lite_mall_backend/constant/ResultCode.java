@@ -2,6 +2,7 @@ package com.softwarelearn.lite_mall_backend.constant;
 
 /**
  * 结果编码枚举类
+ *
  * @author linorman tt ww
  * @data 2023/04/16
  */
@@ -19,29 +20,29 @@ public enum ResultCode {
     USER_EXISTS(1001, "用户已存在"),
     USER_PHONENUMBER_EXISTS(1002, "手机号已存在"),
 
-    GOODS_NOT_EXISTS(1021,"商品不存在"),
+    GOODS_NOT_EXISTS(1021, "商品不存在"),
 
-    GOODS_SEARCH_SUCCESS(1022,"查找成功"),
+    GOODS_SEARCH_SUCCESS(1022, "查找成功"),
 
     /**
      * 登录/登出相关结果
      */
-    USER_SIGHIN_SUCCESS(2000,"登录成功"),
-    USER_NOT_EXISTS(2001,"用户不存在"),
-    USER_NAME_PHONE_NOT_MATCH(2002,"用户名与手机号不匹配"),
-    USER_PASSWORD_WRONG(2003,"密码错误"),
-    USER_ALREADY_LOGINED(2004,"用户已登录"),
-    USER_LOGOUT_SUCCESS(2005,"登出成功"),
-    USER_ALREADY_LOGOUT(2006,"用户已登出"),
-    
+    USER_SIGHIN_SUCCESS(2000, "登录成功"),
+    USER_NOT_EXISTS(2001, "用户不存在"),
+    USER_NAME_PHONE_NOT_MATCH(2002, "用户名与手机号不匹配"),
+    USER_PASSWORD_WRONG(2003, "密码错误"),
+    USER_ALREADY_LOGINED(2004, "用户已登录"),
+    USER_LOGOUT_SUCCESS(2005, "登出成功"),
+    USER_ALREADY_LOGOUT(2006, "用户已登出"),
+    USER_NOT_LOGIN(2007, "用户未登录"),
+
     /**
      * 订单相关结果
      */
     ORDERNUM_SEARCH_SUCCESS(3001, "订单不存在"),
-    ORDERNUM_INCREASE_SUCCESS(3002,"订单量增加成功"),
-    VISITNUM_INCREASE_SUCCESS(3003,"订单量增加成功" ),
-    VISITNUM_SEARCH_SUCCESS(3004,"查找访问量成功" );
-
+    ORDERNUM_INCREASE_SUCCESS(3002, "订单量增加成功"),
+    VISITNUM_INCREASE_SUCCESS(3003, "订单量增加成功"),
+    VISITNUM_SEARCH_SUCCESS(3004, "查找访问量成功");
 
 
     private int code;
@@ -52,14 +53,6 @@ public enum ResultCode {
         this.msg = msg;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
     public static ResultCode getResultCode(int code) {
         for (ResultCode resultCode : ResultCode.values()) {
             if (resultCode.getCode() == code) {
@@ -67,5 +60,13 @@ public enum ResultCode {
             }
         }
         return null;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 }
