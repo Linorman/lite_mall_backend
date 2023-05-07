@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Slf4j
+@CrossOrigin
 @RestController
 @RequestMapping("/mall")
 public class GoodsController {
