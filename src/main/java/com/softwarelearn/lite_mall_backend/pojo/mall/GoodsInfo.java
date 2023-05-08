@@ -18,5 +18,6 @@ public class GoodsInfo implements Serializable {
     private double goodsPrice;
     private long id;
     private String message;
+    private String filePath;
 }
 

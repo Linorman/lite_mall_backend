@@ -23,6 +23,11 @@ spring:
           url: jdbc:mysql://localhost:3306/visit_order_info?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
           username: root
           password: root
+        online_user_info:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/online_user_info?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+          username: root
+          password: root
   mybatis-plus:
     configuration:
       map-underscore-to-camel-case: true

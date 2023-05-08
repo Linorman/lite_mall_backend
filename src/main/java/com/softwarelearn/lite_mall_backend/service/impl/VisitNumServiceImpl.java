@@ -48,4 +48,28 @@ public class VisitNumServiceImpl extends ServiceImpl<VisitNumInfoMapper, VisitNu
         }
         return R.success(ResultCode.VISITNUM_SEARCH_SUCCESS, temp.getVisitNum());
     }
+
+    @Override
+    public R subVisitNum() {
+        LambdaQueryWrapper<VisitNumInfo> queryWrapper = new LambdaQueryWrapper<>();
+        VisitNumInfo temp = visitNumInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            return R.success(ResultCode.VISITNUM_SUB_SUCCESS, 0);
+        }
+        temp.setVisitNum(temp.getVisitNum() - 1);
+        visitNumInfoMapper.updateById(temp);
+        return R.success(ResultCode.VISITNUM_SUB_SUCCESS, temp.getVisitNum());
+    }
+
+    @Override
+    public R resetVisitNum() {
+        LambdaQueryWrapper<VisitNumInfo> queryWrapper = new LambdaQueryWrapper<>();
+        VisitNumInfo temp = visitNumInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            return R.success(ResultCode.VISITNUM_RESET_SUCCESS, 0);
+        }
+        temp.setVisitNum(0);
+        visitNumInfoMapper.updateById(temp);
+        return R.success(ResultCode.VISITNUM_RESET_SUCCESS, temp.getVisitNum());
+    }
 }

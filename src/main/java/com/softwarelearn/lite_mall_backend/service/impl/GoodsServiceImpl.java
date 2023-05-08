@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * ;
- *
+ * 商品服务实现类
  * @author lyh
  * @data 2023/04/16
  */

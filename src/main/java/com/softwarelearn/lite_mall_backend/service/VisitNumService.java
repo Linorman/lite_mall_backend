@@ -22,4 +22,16 @@ public interface VisitNumService extends IService<VisitNumInfo> {
      * @return
      */
     R getVisitNum();
+
+    /**
+     * 访问量减一
+     * @return R
+     */
+    R subVisitNum();
+
+    /**
+     * 访问量重置
+     * @return R
+     */
+    R resetVisitNum();
 }

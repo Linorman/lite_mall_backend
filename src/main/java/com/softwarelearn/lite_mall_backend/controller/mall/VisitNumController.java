@@ -26,9 +26,20 @@ public class VisitNumController{
     public R visitNumIncrease(){
         return visitNumService.updateVisitNum();
     }
+
     @GetMapping("/getVisitNum")
     public R getVisitNum(){
         return visitNumService.getVisitNum();
+    }
+
+    @PostMapping("/visitNumReset")
+    public R visitNumReset(){
+        return visitNumService.resetVisitNum();
+    }
+
+    @PostMapping("/visitNumSub")
+    public R visitNumSub(){
+        return visitNumService.subVisitNum();
     }
 
 }

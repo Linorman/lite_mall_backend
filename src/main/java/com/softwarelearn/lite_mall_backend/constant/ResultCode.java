@@ -37,10 +37,18 @@ public enum ResultCode {
     /**
      * 订单相关结果
      */
-    ORDERNUM_SEARCH_SUCCESS(3001, "订单不存在"),
+    ORDERNUM_SEARCH_SUCCESS(3001, "订单量不存在"),
     ORDERNUM_INCREASE_SUCCESS(3002,"订单量增加成功"),
     VISITNUM_INCREASE_SUCCESS(3003,"订单量增加成功" ),
-    VISITNUM_SEARCH_SUCCESS(3004,"查找访问量成功" );
+    VISITNUM_SEARCH_SUCCESS(3004,"查找访问量成功" ),
+    VISITNUM_RESET_SUCCESS(3005,"重置访问量成功" ),
+    VISITNUM_SUB_SUCCESS(3006,"访问量减一成功" ),
+    ORDERNUM_RESET_SUCCESS(3007,"重置订单量成功" ),
+    ORDERNUM_SUB_SUCCESS(3008,"订单量减一成功" ),
+    ONLINEUSERNUM_SEARCH_SUCCESS(3009,"查找在线用户量成功" ),
+    ONLINEUSERNUM_INCREASE_SUCCESS(3010,"在线用户量增加成功" ),
+    ONLINEUSERNUM_SUB_SUCCESS(3011,"在线用户量减一成功" ),
+    ONLINEUSERNUM_RESET_SUCCESS(3012,"重置在线用户量成功" );
 
 
 
