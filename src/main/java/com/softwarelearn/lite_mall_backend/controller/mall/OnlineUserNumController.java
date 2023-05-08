@@ -1,6 +1,11 @@
 package com.softwarelearn.lite_mall_backend.controller.mall;
 
+import com.softwarelearn.lite_mall_backend.constant.R;
+import com.softwarelearn.lite_mall_backend.service.OnlineUserNumService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,4 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mall")
 public class OnlineUserNumController {
+    @Autowired
+    private OnlineUserNumService onlineUserNumService;
+
+    @PostMapping("/onlineUserNumIncrease")
+    public R onlineUserNumIncrease(){
+        onlineUserNumService.updateOnlineUserNum();
+    }
+
+    @PostMapping("/onlineUserNumReset")
+    public R onlineUserNumReset(){
+        onlineUserNumService.resetOnlineUserNum();
+    }
+
+    @PostMapping("/onlineUserNumSub")
+    public R onlineUserNumSub(){
+        onlineUserNumService.subOnlineUserNum();
+    }
+
+    @GetMapping("/getOnlineUserNum")
+    public R getOnlineUserNum(){
+        return onlineUserNumService.getOnlineUserNum();
+    }
 }
