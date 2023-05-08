@@ -23,17 +23,17 @@ public class OnlineUserNumController {
 
     @PostMapping("/onlineUserNumIncrease")
     public R onlineUserNumIncrease(){
-        onlineUserNumService.updateOnlineUserNum();
+        return onlineUserNumService.updateOnlineUserNum();
     }
 
     @PostMapping("/onlineUserNumReset")
     public R onlineUserNumReset(){
-        onlineUserNumService.resetOnlineUserNum();
+        return onlineUserNumService.resetOnlineUserNum();
     }
 
     @PostMapping("/onlineUserNumSub")
     public R onlineUserNumSub(){
-        onlineUserNumService.subOnlineUserNum();
+        return onlineUserNumService.subOnlineUserNum();
     }
 
     @GetMapping("/getOnlineUserNum")
