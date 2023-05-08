@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Slf4j
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -29,7 +30,7 @@ public class UserController {
         return userService.signIn(userInfo);
     }
 
-    @GetMapping("/getUserInfo")
+    @PostMapping("/getUserInfo")
     public R getUserInfo(@RequestBody UserInfo userInfo){
         return userService.getUserInfo(userInfo);
     }

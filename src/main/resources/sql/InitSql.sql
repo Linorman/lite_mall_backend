@@ -24,5 +24,20 @@ create table goods_info
     message     varchar(255) not null
 );
 
+use visit_order_info;
+create table visit_num_info
+(
+    id        int auto_increment
+        primary key,
+    visit_num int default 0 not null
+);
+
+create table order_num_info
+(
+    id        int auto_increment
+        primary key,
+    order_num int default 0 not null
+);
+
 
 
