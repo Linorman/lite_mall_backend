@@ -23,4 +23,16 @@ public interface OrderNumService extends IService<OrderNumInfo> {
      * @return R
      */
     R getOrderNum();
+
+    /**
+     * 订单量减一
+     * @return R
+     */
+    R subOrderNum();
+
+    /**
+     * 订单量重置
+     * @return R
+     */
+    R resetOrderNum();
 }

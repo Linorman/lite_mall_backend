@@ -48,4 +48,28 @@ public class OrderNumServiceImpl extends ServiceImpl<OrderNumInfoMapper, OrderNu
         }
         return R.success(ResultCode.ORDERNUM_SEARCH_SUCCESS, temp.getOrderNum());
     }
+
+    @Override
+    public R subOrderNum() {
+        LambdaQueryWrapper<OrderNumInfo> queryWrapper = new LambdaQueryWrapper<>();
+        OrderNumInfo temp = orderNumInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            return R.success(ResultCode.ORDERNUM_SUB_SUCCESS, 0);
+        }
+        temp.setOrderNum(temp.getOrderNum() - 1);
+        orderNumInfoMapper.updateById(temp);
+        return R.success(ResultCode.ORDERNUM_SUB_SUCCESS, temp.getOrderNum());
+    }
+
+    @Override
+    public R resetOrderNum() {
+        LambdaQueryWrapper<OrderNumInfo> queryWrapper = new LambdaQueryWrapper<>();
+        OrderNumInfo temp = orderNumInfoMapper.selectOne(queryWrapper);
+        if (temp == null) {
+            return R.success(ResultCode.ORDERNUM_RESET_SUCCESS, 0);
+        }
+        temp.setOrderNum(0);
+        orderNumInfoMapper.updateById(temp);
+        return R.success(ResultCode.ORDERNUM_RESET_SUCCESS, temp.getOrderNum());
+    }
 }

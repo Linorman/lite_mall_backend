@@ -30,4 +30,14 @@ public class OrderNumController{
         return orderNumService.getOrderNum();
     }
 
+    @PostMapping("/orderNumReset")
+    public R orderNumReset(){
+        return orderNumService.resetOrderNum();
+    }
+
+    @PostMapping("/orderNumSub")
+    public R orderNumSub(){
+        return orderNumService.subOrderNum();
+    }
+
 }
