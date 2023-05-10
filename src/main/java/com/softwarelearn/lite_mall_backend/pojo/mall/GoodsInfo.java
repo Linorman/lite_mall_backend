@@ -14,9 +14,9 @@ import java.io.Serializable;
 @Slf4j
 @Data
 public class GoodsInfo implements Serializable {
+    private Long id;
     private String goodsName;
-    private double goodsPrice;
-    private long id;
+    private Double goodsPrice;
     private String message;
     private String filePath;
 }
