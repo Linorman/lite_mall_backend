@@ -40,3 +40,4 @@ public class UserController {
         return userService.logout(userInfo);
     }
 }
+

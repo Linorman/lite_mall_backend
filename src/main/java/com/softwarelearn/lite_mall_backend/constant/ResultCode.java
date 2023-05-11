@@ -18,7 +18,9 @@ public enum ResultCode {
     USER_REGISTER_SUCCESS(1000, "注册成功"),
     USER_EXISTS(1001, "用户已存在"),
     USER_PHONENUMBER_EXISTS(1002, "手机号已存在"),
-
+    /**
+     * 商品信息查询
+     */
     GOODS_NOT_EXISTS(1021,"商品不存在"),
 
     GOODS_SEARCH_SUCCESS(1022,"查找成功"),
@@ -48,7 +50,9 @@ public enum ResultCode {
     ONLINEUSERNUM_SEARCH_SUCCESS(3009,"查找在线用户量成功" ),
     ONLINEUSERNUM_INCREASE_SUCCESS(3010,"在线用户量增加成功" ),
     ONLINEUSERNUM_SUB_SUCCESS(3011,"在线用户量减一成功" ),
-    ONLINEUSERNUM_RESET_SUCCESS(3012,"重置在线用户量成功" );
+    ONLINEUSERNUM_RESET_SUCCESS(3012,"重置在线用户量成功" ),
+    FILE_NOT_FOUND(3033,"文件未找到");
+
 
 
 
