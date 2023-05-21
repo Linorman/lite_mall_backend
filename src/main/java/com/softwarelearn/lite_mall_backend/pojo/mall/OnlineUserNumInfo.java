@@ -1,5 +1,6 @@
 package com.softwarelearn.lite_mall_backend.pojo.mall;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,7 +13,8 @@ import java.io.Serializable;
  */
 @Slf4j
 @Data
+@TableName("online_user_info")
 public class OnlineUserNumInfo implements Serializable {
-    private int id;
-    private int onlineUserNum;
+    private Long id;
+    private Integer onlineUserNum;
 }
