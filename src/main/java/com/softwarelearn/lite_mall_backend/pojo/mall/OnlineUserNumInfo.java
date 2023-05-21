@@ -13,6 +13,6 @@ import java.io.Serializable;
 @Slf4j
 @Data
 public class OnlineUserNumInfo implements Serializable {
-    private int id;
-    private int onlineUserNum;
+    private Long id;
+    private Integer onlineUserNum;
 }

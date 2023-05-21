@@ -39,4 +39,7 @@ public class UserController {
     public R logout(@RequestBody UserInfo userInfo){
         return userService.logout(userInfo);
     }
+
+    @PostMapping("/setUserInfo")
+    public R setUserInfo(@RequestBody UserInfo userInfo){return userService.setUserInfo(userInfo);}
 }

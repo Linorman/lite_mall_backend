@@ -104,4 +104,18 @@ public class UserServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> imple
         log.info("用户退出登录成功");
         return R.success(ResultCode.USER_LOGOUT_SUCCESS, null);
     }
+    @Override
+    public R setUserInfo(UserInfo userInfo) {
+        LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserInfo::getUsername,userInfo.getUsername());
+        UserInfo temp=userInfoMapper.selectOne(queryWrapper);
+        if(temp==null){
+            log.info("用户不存在");
+            return R.error(ResultCode.USER_NOT_EXISTS,null);
+        }
+        else {
+            userInfoMapper.update(userInfo,queryWrapper);
+            return R.success(ResultCode.SUCCESS,null);
+        }
+    }
 }

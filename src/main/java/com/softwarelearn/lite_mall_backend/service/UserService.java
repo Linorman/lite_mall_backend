@@ -37,5 +37,10 @@ public interface UserService extends IService<UserInfo> {
      * @return R
      */
     public R logout(UserInfo userInfo);
-
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return R
+     */
+    public R setUserInfo(UserInfo userInfo);
 }
