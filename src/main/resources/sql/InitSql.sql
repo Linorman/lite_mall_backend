@@ -29,7 +29,9 @@ create table goods_info
     message     varchar(255) not null,
     file_path  varchar(1023) not null
 );
-
+insert into goods_info (goods_name, goods_price, message, file_path) values ('iphone', 10000, 'iphone', 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1684926185.82863087.png');
+insert into goods_info (goods_name, goods_price, message, file_path) values ('huawei', 8000, 'huawei', 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1672368924.1898024.png');
+insert into goods_info (goods_name, goods_price, message, file_path) values ('xiaomi', 5000, 'xiaomi', 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1670745532.86084186.png');
 
 use visit_order_info;
 create table visit_num_info
