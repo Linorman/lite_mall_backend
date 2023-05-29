@@ -39,17 +39,13 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsInfoMapper, GoodsInfo> im
 
     @Override
     public R getGoods(GoodsInfo goodsInfo) {
-        String goodsName = goodsInfo.getGoodsName();
+        Long id = goodsInfo.getId();
         LambdaQueryWrapper<GoodsInfo> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(GoodsInfo::getGoodsName, goodsName);
-        List temp = goodsInfoMapper.selectList(queryWrapper);
-        if (temp == null) {
-            log.info("商品不存在");
+        queryWrapper.eq(GoodsInfo::getId, id);
+        GoodsInfo goodsInfoTemp = goodsInfoMapper.selectOne(queryWrapper);
+        if (goodsInfoTemp == null) {
             return R.error(ResultCode.GOODS_NOT_EXISTS, null);
         }
-        goodsInfoMapper.insert(goodsInfo);
-        log.info("商品查找成功");
-        return R.success(ResultCode.GOODS_SEARCH_SUCCESS, temp);
-
+        return R.success(ResultCode.SUCCESS, goodsInfoTemp);
     }
 }
